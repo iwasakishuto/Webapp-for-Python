@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve uwsgi
+After=network.target
+
+[Service]
+User=root  # 好ましくない
+Group=root # 好ましくない
+WorkingDirectory=/usr/local/app
+Environment="LD_LIBRARY_PATH=/usr/lib"
+ExecStart=/usr/bin/uwsgi  --ini uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target
