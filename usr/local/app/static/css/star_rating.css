@@ -1,0 +1,30 @@
+.star-rating {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+
+}
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  color: #ccc;
+}
+span{
+    font-size: 50px;
+    color: transparent;
+    background-image: linear-gradient(orange, orange), linear-gradient(gray, gray);
+    background-position: left, right;
+    background-repeat: no-repeat;
+    background-size: var(--rate) 100%, calc(100% - var(--rate)) 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+span:before{
+    content: "★★★★★";
+}
