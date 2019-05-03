@@ -1,16 +1,90 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>sample</title>
-    <body>
-      <h1>Upload image.</h1>
-      <form method = post action='/send' enctype = multipart/form-data>
-        <input type=file name=image>
-        <input type=submit value=send>
-      </form>
-      {% if class_name %}
-      <h2>{{class_name}}</h2>
-      {% endif %}
-    </body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>質問箱</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="../static/style.css" rel="stylesheet" type="text/css">
+    <!-- USE Metamorphous-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Metamorphous" rel="stylesheet">
+    <!-- USE FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" href="../static/apple-touch-icon-152x152.png" sizes="152x152">
+    <!-- ajax の非同期通信入れたい
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/slack.js"></script>
+     -->
   </head>
+
+  <header class="text-white">
+
+    <!-- テキストが送信された時の処理。 -->
+    {% if send %}
+    <section class="PredictFailure">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <strong>送信されました！！</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto text-left">
+          <h1>
+            <span style="border-bottom: double 6px orange";>
+              質問箱
+            </span>
+          </h1>
+        </div>
+        <div class="col-lg-10 mx-auto text-left">
+          <p>誰でも気軽に質問を投げられる環境が作りたかったので、bot的なのを作ってみました。</span></p>
+          <p><span style="border-bottom: double 3px orange";>誰が質問したのか特定することができないようになっている</span>ので、安心して使ってください！！</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+
+          <!-- ここから入力フォーム -->
+          <form action="/send" method ="post">
+
+          <!-- チャンネル選択 -->
+          <p>チャンネルを選択してください。</p>
+            <select class="form-control" name="Channe">
+              <option value="CXXXXXXXX">general</option>
+              <option value="CYYYYYYYY">random</option>
+            </select>
+
+            {% if text1 %}
+            <!-- 本当はここをajax通信にして、動的に会話の内容を表示したい。 -->
+            <div class="conversation">
+              <legend>【直近のトーク内容】</legend>
+              <label><input type="radio" name="reply" value="{{ ts1 }}">{{ text1 }}</button></label><br>
+              <label><input type="radio" name="reply" value="{{ ts2 }}">{{ text2 }}</button></label><br>
+              <label><input type="radio" name="replyy" value="{{ ts3 }}">{{ text3 }}</button></label><br>
+              <label><input type="radio" name="reply" value="{{ ts4 }}">{{ text4 }}</button></label><br>
+              <label><input type="radio" name="reply" value="{{ ts5 }}">{{ text5 }}</button></label><br>
+              <label><input type="radio" name="reply" value="{{ ts6 }}">{{ text6 }}</button></label><br>
+            </div>
+            {% endif %}
+            <p>会話の内容が見たい場合は、ここを押してください！！
+            <button type="submit" class="btn btn-default" value="check" name="button">トークを見る</button><br><br>
+            <!-- 画像を送信する -->
+            <input type=file name=file>
+            <!-- テキスト入力エリア -->
+            <p>送りたい内容を書いてください。<br>なお、テキストを選択すると、返信ができますが、<font color="Red">チャンネルが正しく選択されているか確認してください！</font></p>
+
+            <textarea class="form-control" rows="3" placeholder=":あさの: ←これで素敵なスタンプが送れます。" name="text"></textarea>
+            <!-- 送信ボタン -->
+            <button type="submit" class="btn btn-default" value="send" name="button">送信</button>
+          </form>
+    </div>
+  </header>
 </html>
