@@ -1,39 +1,23 @@
-# Webapp for Python
-In a Hackathon, it is very and very effective presentation method to deploy the web applications. In preparation for that, I summarized the consistent flow of making machine learning models into web app. If you follow this, you can easily deploy ML/DL model at a Hackathon:)
-## [日本語版解説記事](https://qiita.com/cabernet_rock/items/852fc7c5d382fdc422a3)
+# GAS(GoogleForm Answering SlackBot)
+It is tiresome to repeat the same things in the daily life. One of them is replying the routine questioners, so I made an application to do it automatically!!
 
 ## Architecture
-<img src="https://camo.qiitausercontent.com/f27cff7fde0354a96c1eb617ac7271754d7ee5c9/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e61702d6e6f727468656173742d312e616d617a6f6e6177732e636f6d2f302f3330383730302f32393539623236622d613039322d373538642d363639662d3565306461303665313731342e706e67">
+![Overview](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/308700/84f72447-f31f-f4ef-f992-0e8c35ffefff.png)
 
-Reference: [A Guide to Scaling Machine Learning Models in Production]("https://hackernoon.com/a-guide-to-scaling-machine-learning-models-in-production-aa8831163846")
+|Name|Explanation|
+|:--|:--|
+|[Google Forms](https://www.google.com/forms/about/)|Free Online Surveys for Personal Use.|
+|[Slack](https://slack.com/)|Where work happens.|
+|[Outgoing Webhooks](https://api.slack.com/custom-integrations/outgoing-webhooks)|Legacy method of sending notifications to an app about two specific activities.|
+|[Google Apps Script](https://developers.google.com/apps-script)|Makes it easy to create and publish add-ons in an online store for Google Sheets, Docs, Slides, and Forms.|
+|[Amazon EC2](https://aws.amazon.com/ec2/)|Web service that provides secure, resizable compute capacity in the cloud.|
 
+## [日本語版解説記事](https://qiita.com/cabernet_rock/items/1e2aa3ba48328025d0d8)
 
-| Name                                        | Role                                                                        |
-| ------------------------------------------- | --------------------------------------------------------------------------- |
-| [Nginx](https://nginx.org/en/)              | Web server. It provides load-balancing, SSL configuration, and so on.       |
-| [Flask](http://flask.pocoo.org)             | Minimalistic python framework for building RESTful APIs.                    |
-| [uWSGI](https://uwsgi-docs.readthedocs.io/) | Web Server Gateway Interface. It can handle with multiple requests at once. |
-
-
-## Structure
-
-```
-├── etc
-│   ├── nginx
-│   │   ├── conf.d
-│   │   │   ├── default.conf
-│   │   │   └── uwsgi.conf
-│   │   ├── nginx.conf
-│   │   └── uwsgi_params
-│   └── systemd
-│       └── system
-│           └── uwsgi.service
-└── usr
-    └── local
-        └── app
-            ├── main.py
-            ├── templates
-            │   └── index.html
-            ├── tmp
-            └── uwsgi.ini
-```
+## References
+- [【Googleログイン自動化】Python×seleniumでGoogleにログインする](https://qiita.com/spark55/items/144c6cb7a7444f804564)
+- [EC2 UbuntuでGoogle Chromeをヘッドレス実行してスクリーンショットを採取する手順](https://qiita.com/shinsaka/items/37436e256c813d277d6d)
+- [PythonかければWebアプリぐらい作れる。](https://qiita.com/cabernet_rock/items/852fc7c5d382fdc422a3)
+- [Slack BotをGASでいい感じで書くためのライブラリを作った](https://qiita.com/soundTricker/items/43267609a870fc9c7453)
+- [Slack上のメッセージをGoogleAppsScriptで受け取ってよしなに使う](https://qiita.com/kyo_nanba/items/83b646357d592eb9a87b)
+- [SlackのOutgoing WebHooksとGoogleAppsScriptで簡単な会話botを作ってみた](https://qiita.com/pistaman/items/a542119ea28871960477)
